@@ -21,12 +21,12 @@ body, html {
 
 input {
     width: 50%;
-    padding-left: 25%;
-    padding-right: 25%;
+    text-align: center;
     background: none;
     border : none;
     border-bottom : white solid .5px;
-    color: black;
+    color: white;
+    -webkit-highlight: none;
 }
 
 .btn {

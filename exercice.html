@@ -17,15 +17,13 @@
 <body>
     <div class="container">
         <p> Météo</p>
-        <form action="script.php" method="post">
-            <input type="text" name="ville" id="ville">
 
-            <div class="row">
-                <div class="col-md-12"><button type="submit" class="btn btn_default" id="btn">Valider</button></div>
-            </div>
-        </form>
-
+        <input type="text" name="ville" id="ville" value="">
         <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn_default" id="btn">Valider</button></div>
+        </div>
+       <div class="row">
             <div class="col-md-12" id="date">Date </div>
         </div>
 
@@ -43,7 +41,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3" id="longitude">Longitude</div>
+            <div class="col-md-4" id="longitude">Longitude</div>
             <div class="col-md-3" id="latitude">Latitude</div>
             <div class="col-md-6-offset-6"></div>
         </div>

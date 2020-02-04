@@ -1,6 +1,6 @@
 
 
-var input = document.getElementById("ville").value;
+
 var btn = document.getElementById("btn");
 var t =document.getElementById("temp");
 var tempMax =document.getElementById("temp_max");
@@ -11,27 +11,38 @@ var hum =document.getElementById("humidity");
 var long =document.getElementById("longitude");
 var lat =document.getElementById("latitude");
 var card =document.getElementById("card");
+var date = document.getElementById("date");
+var carte = document.getElementById("card")
 
 
 function inputMeteo()
-{
+{   var input = document.getElementById("ville").value;
+
+     var dateNow = new Date();
+     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+     // var day = dateNow.getDate();
+     // var month = dateNow.getMonth()+1;
+     // var year= dateNow.getFullYear();
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {
         if (this.readyState === 4 && this.status === 200)
         {
-            console.log(this.response);
-            var json = JSON.parse(this.responseText);
 
-            t.innerHTML=json.main.temp;
-            tempMax.innerHTML=json.main.temp_max;
-            tempMin.innerHTML=json.main.temp_min;
-            pression.innerHTML=json.main.pressure;
-            wind.innerHTML=json.wind.speed;
-            hum.innerHTML=json.main.humidity;
-            long.innerHTML=json.coord.lon;
-            lat.innerHTML=json.coord.lat;
-            card.innerHTML=json.cards;
+            var json = JSON.parse(this.responseText);
+            console.log(this.responseText);
+
+            date.innerHTML=dateNow.toLocaleDateString('fr-FR', options);
+            t.innerHTML=Math.round(json.main.temp)+"°";
+            tempMax.innerHTML="Temp.max : "+Math.round(+json.main.temp_max)+"°";
+            tempMin.innerHTML="Temp.min : "+Math.round(json.main.temp_min)+"°";
+            pression.innerHTML="Pres.athmospérique : "+json.main.pressure+" hPa";
+            wind.innerHTML="Vistesse du vent : "+json.wind.speed+" m/s";
+            hum.innerHTML="Humidité : "+json.main.humidity+"%";
+            long.innerHTML="Longitude : "+json.coord.lon;
+            lat.innerHTML="Latitude : "+json.coord.lat;
+            card.innerHTML="Carte : ";
 
         }
     };

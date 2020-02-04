@@ -1,9 +1,11 @@
 <?php
 
-if (isset($_POST["ville"]) && !empty($_POST["ville"])) {
+if (isset($_GET["ville"]) && !empty($_GET["ville"])) {
 
-    $ville = $_POST ["ville"];
-    $url = "api.openweathermap.org/data/2.5/weather?q=".$ville."&units=metric&APPID=846f84f23e914c30b89fb82c3b9f2eed";
+    $input = $_GET["ville"];
+    $url = "api.openweathermap.org/data/2.5/weather?q=".$input."&units=metric&APPID=846f84f23e914c30b89fb82c3b9f2eed";
+
+
 
     $ch=curl_init();
 
@@ -12,6 +14,10 @@ if (isset($_POST["ville"]) && !empty($_POST["ville"])) {
     curl_setopt($ch,CURLOPT_HEADER, false);
     $output = curl_exec($ch);
     curl_close($ch);
+
+    echo $output;
+
+  //  json_encode($ch);
 
 }
 
